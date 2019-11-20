@@ -1,20 +1,30 @@
-import React from 'react';
-import './App.css';
-
+import React, {useState, useEffect} from 'react'
+import './App.css'
 import firebase from './firebase'
 
-const ref = firebase.database().ref('test')
 
-ref.on( 'value',snapshot => {
-  console.log(snapshot.val())
-})
 
 function App() {
+  //Hooks
+  const [data, setData] = useState({})
+
+  useEffect(() => {
+    const ref = firebase.database().ref('test')
+    ref.on( 'value',snapshot => {
+    setData(snapshot.val())
+    })
+    return () => {
+      console.log('clear')
+      ref.off()
+    }
+  }, [])
+  
+
   return (
     <div>
-      
+      <pre>{JSON.stringify(data)}</pre>
     </div>
   );
 }
 
-export default App;
+export default App
