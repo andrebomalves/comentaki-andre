@@ -1,46 +1,21 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import './App.css'
-import firebase from './firebase'
-
-const useDataBase = endpoint => {
-  const [data, setData] = useState({})
-
-  useEffect(() => {
-    const ref = firebase.database().ref(endpoint)
-    ref.on( 'value',snapshot => {
-    setData(snapshot.val())
-    })
-    return () => {
-      console.log('clear')
-      ref.off()
-    }
-  }, [endpoint])
-
-  return data
-}
-
-const A = () =>{
-  const data = useDataBase('test/a')
-  return(
-    <pre>{JSON.stringify(data)}</pre>
-  )
-}
-
-const Comments = () => {
-  const data = useDataBase('test')
-  return(
-    <pre>{JSON.stringify(data)}</pre>
-  )
-}
+import NewComment from './NewComment'
+import Comments from './Comments'
+import { AuthProvider} from './auth'
+import CreateUser from './CreateUser'
 
 function App() {
-  //Hooks
+
   return (
+    <AuthProvider>
     <div>
+      <NewComment />
       <Comments />
-      <A />
+      <CreateUser />
     </div>
-  );
+    </AuthProvider>
+  )
 }
 
 export default App
