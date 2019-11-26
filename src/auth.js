@@ -25,7 +25,7 @@ const useCreateUser = () =>{
 }
 
 const useGetUser = () =>{
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(undefined);
   useEffect(() => {
     firebase.auth().onAuthStateChanged( (currentUser) =>{
       if(currentUser){
@@ -36,13 +36,21 @@ const useGetUser = () =>{
     })
     return undefined
   })
+
+  return user
+}
+
+const signOut = () => {
+  firebase.auth().signOut().then( () => {
+    console.log('singOut')
+  })
 }
 
 export const AuthProvider = (props) =>{
   const user = useGetUser()
   const [createUserState,createUser] = useCreateUser()
   return(
-    <AuthContext.Provider value={{user, createUser:{createUserState,createUser}}}>
+    <AuthContext.Provider value={{user, signOut, createUser:{createUserState,createUser}}}>
       {props.children}
     </AuthContext.Provider>
   )

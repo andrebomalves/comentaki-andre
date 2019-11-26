@@ -3,11 +3,11 @@ import {AuthContext} from './auth'
 
 function CreateUser() {
   const auth = useContext(AuthContext)
-  console.log(auth)
+
   return (
     <div>
     {JSON.stringify(auth.createUser)}
-      <button onClick={() => { auth.createUser.createUser('andreb@andrebomalves.xyz','123456')}}> botão</button>
+      <button onClick={() => { auth.createUser.createUser('andre@andrebomalves.xyz','123456')}}> botão</button>
     </div>
   )
 }
