@@ -24,6 +24,23 @@ const useCreateUser = () =>{
   return [state, createUser]
 }
 
+const useSignInUser = () =>{
+  const [state, setState] = useState({error:'',success:''});
+
+  const signInUser = (email, password) =>{
+    firebase
+    .auth()
+    .signInWithEmailAndPassword(email,password)
+    .catch( e =>{
+      setState({
+        ...state,
+        error: e.message
+      })
+    })
+  }  
+  return [state, signInUser]
+}
+
 const useGetUser = () =>{
   const [user, setUser] = useState(undefined);
   useEffect(() => {
@@ -49,8 +66,13 @@ const signOut = () => {
 export const AuthProvider = (props) =>{
   const user = useGetUser()
   const [createUserState,createUser] = useCreateUser()
+  const [signInUserState,signInUser] = useSignInUser()
+
   return(
-    <AuthContext.Provider value={{user, signOut, createUser:{createUserState,createUser}}}>
+    <AuthContext.Provider value={{user, signOut, 
+        createUser:{createUserState,createUser},
+        signInUser:{signInUserState,signInUser}
+      }}>
       {props.children}
     </AuthContext.Provider>
   )
