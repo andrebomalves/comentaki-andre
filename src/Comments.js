@@ -14,10 +14,12 @@ function Comments() {
     return 'Carregando!!!'
   }
 
-  return (
+  return ( 
+    <ul class='list-group' >{
     ids.map((id) => {
       return <Comment key={id} comment={data[id]} />
-    })
+    }) }
+    </ul>
   )
 }
 

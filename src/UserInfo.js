@@ -1,5 +1,5 @@
-import React,{useContext,useState} from 'react';
-import {AuthContext} from './auth'
+import React, { useContext, useState } from 'react';
+import { AuthContext } from './auth'
 
 function UserInfo() {
   const auth = useContext(AuthContext)
@@ -16,18 +16,20 @@ function UserInfo() {
   }
 
   const save = () => {
-    if(newDisplayName !== ''){
-      auth.user.updateProfile({displayName: newDisplayName})
+    if (newDisplayName !== '') {
+      auth.user.updateProfile({ displayName: newDisplayName })
     }
   }
 
   return (
-    <>
-    <p>Olá {displayName} !</p>
-    <input type='text' defaultValue={newDisplayName || displayName} onChange={(evt) => setNewDisplayName(evt.target.value) } />
-    <button onClick={save} >Save Display Name</button>
-    <button onClick={auth.signOut} >Sair</button>
-    </>
+    <div className='form-inline'>
+      <div>    
+        <p>Olá {displayName} !</p>
+        <input type='text' className="form-control form-control-sm mb-2 mr-sm-2" defaultValue={newDisplayName || displayName} onChange={(evt) => setNewDisplayName(evt.target.value)} />
+        <button className='btn btn-primary btn-sm mb-2' onClick={save} >Save Display Name</button>
+        <button className='btn btn-secondy btn-sm mb-2' onClick={auth.signOut} >Sair</button>
+      </div>
+    </div>
   )
 }
 
