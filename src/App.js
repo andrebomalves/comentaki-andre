@@ -11,7 +11,7 @@ function App() {
 
   return (
     <AuthProvider>
-    <div>
+    <div className='col-3'>
       <NewComment />
       <Comments />
       <CreateUser />

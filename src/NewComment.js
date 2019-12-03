@@ -32,7 +32,7 @@ function NewComment() {
     <div class="input-group mb-3">
       <textarea type="text" value={comment} onChange={evt => { setComment(evt.target.value) }} class="form-control" placeholder="Escreva aqui seu comentário" />
       <div class="input-group-append">
-        <button class="btn btn-outline-primary" onClick={createComment} type="button" id="button-addon2">Botão</button>
+        <button class="btn btn-primary" onClick={createComment} type="button" >Comentar</button>
       </div>
     </div>
   )

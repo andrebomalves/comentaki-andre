@@ -16,13 +16,14 @@ function CreateUser() {
   }
 
   return (
-    <div className='form-inline'>
+    <div className='input-group'>
       {auth.createUser.createUserState.error !== '' &&
         <p>{auth.createUser.createUserState.error}</p>
       }
-      <div>
-        <input type='text' className="form-control form-control-sm mb-2 mr-sm-2"  placeholder='Seu e-mail' value={form.email} onChange={onChange('email')} />
-        <input type='password' className="form-control form-control-sm mb-2 mr-sm-2"  placeholder='Sua senha' value={form.passwd} onChange={onChange('passwd')} />
+      <input type='text' className="form-control form-control-sm mb-2 "  placeholder='Seu e-mail' value={form.email} onChange={onChange('email')} />
+        <input type='password' className="form-control form-control-sm mb-2 "  placeholder='Sua senha' value={form.passwd} onChange={onChange('passwd')} />
+        
+      <div className='input-group-append'>
         <button className='btn btn-sm btn-success mb-2' onClick={() => { auth.createUser.createUser(form.email, form.passwd) }}>Criar</button>
       </div>
     </div>

@@ -15,11 +15,14 @@ function Comments() {
   }
 
   return ( 
-    <ul class='list-group' >{
+    <div>
+    <ul className='list-group' style={{ height: 300, overflowY:'scroll' }} >{
     ids.map((id) => {
       return <Comment key={id} comment={data[id]} />
     }) }
     </ul>
+    <br />
+    </div>
   )
 }
 

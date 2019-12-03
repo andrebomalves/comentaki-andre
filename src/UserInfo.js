@@ -22,14 +22,14 @@ function UserInfo() {
   }
 
   return (
-    <div className='form-inline'>
-      <div>    
-        <p>Olá {displayName} !</p>
-        <input type='text' className="form-control form-control-sm mb-2 mr-sm-2" defaultValue={newDisplayName || displayName} onChange={(evt) => setNewDisplayName(evt.target.value)} />
-        <button className='btn btn-primary btn-sm mb-2' onClick={save} >Save Display Name</button>
-        <button className='btn btn-secondy btn-sm mb-2' onClick={auth.signOut} >Sair</button>
+
+    <div className="input-group mb-3">
+    <input type="text" className="form-control" placeholder="" defaultValue={newDisplayName || displayName} onChange={(evt) => setNewDisplayName(evt.target.value)} />
+      <div className="input-group-append">
+        <button className="btn btn-outline-primary" onClick={save} type="button">Alterar Nome</button>
+        <button className="btn btn-outline-primary" onClick={auth.signOut} type="button">Sair</button>
       </div>
-    </div>
+      </div>
   )
 }
 
