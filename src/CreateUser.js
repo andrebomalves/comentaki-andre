@@ -16,17 +16,16 @@ function CreateUser() {
   }
 
   return (
-    <>
-      <h3>Criar uma conta: </h3>
+    <div className='form-inline'>
       {auth.createUser.createUserState.error !== '' &&
         <p>{auth.createUser.createUserState.error}</p>
       }
       <div>
-        <input type='text' placeholder='Seu e-mail' value={form.email} onChange={onChange('email')} />
-        <input type='password' placeholder='Sua senha' value={form.passwd} onChange={onChange('passwd')} />
-        <button onClick={() => { auth.createUser.createUser(form.email, form.passwd) }}>Criar</button>
+        <input type='text' className="form-control form-control-sm mb-2 mr-sm-2"  placeholder='Seu e-mail' value={form.email} onChange={onChange('email')} />
+        <input type='password' className="form-control form-control-sm mb-2 mr-sm-2"  placeholder='Sua senha' value={form.passwd} onChange={onChange('passwd')} />
+        <button className='btn btn-sm btn-success mb-2' onClick={() => { auth.createUser.createUser(form.email, form.passwd) }}>Criar</button>
       </div>
-    </>
+    </div>
   )
 }
 

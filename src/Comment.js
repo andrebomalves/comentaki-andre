@@ -9,7 +9,10 @@ const Time = ({TIMESTAMP}) => {
 function Comment({ comment }) {
   //const auth = useContext(AuthContext)
   return (
-    <div>{comment.content} por: {comment.user.name} em: <Time TIMESTAMP={comment.createdAt} /></div>
+    <div class="list-group-item list-group-item-action flex-column align-items-start">
+      <p class="mb-1"> {comment.content} </p>
+      <small>por: {comment.user.name} em: <Time TIMESTAMP={comment.createdAt} /> </small>
+  </div>
   )
 }
 
